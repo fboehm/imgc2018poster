@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Frederick J. Boehm, Brian S. Yandell, and Karl W. Broman" />
+  <title>Testing pleiotropy vs. separate QTL in multiparental populations</title>
+    <style type="text/css">code{white-space: pre;}</style>
+    <link rel="stylesheet" href="drposter_files//drposter.css" />
+    <link rel="stylesheet" href="custom.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<div class="slides ">
+
+<header>
+    <h1 class="title">Testing pleiotropy vs. separate QTL in multiparental populations</h1>
+    <h2 class="author">Frederick J. Boehm, Brian S. Yandell, and Karl W. Broman</h2>
+</header>
+
+<div id="section" class="section level1 col-3">
+<h1></h1>
+<div id="abstract" class="section level2">
+<h2>Abstract</h2>
+<ul>
+<li><p>High-dimensional phenotypes in multiparental populations provide new opportunities for understanding complex trait architecture</p></li>
+<li><p>New analysis tools are required</p></li>
+<li><p>We developed a test of pleiotropy vs. separate QTL for multiparental populations</p></li>
+<li><p>We applied it to find evidence for separate QTL for behavioral phenotypes in a 3 cM region in 261 Diversity Outbred mice</p></li>
+<li><p>We share our methods in an R package, <code>qtl2pleio</code> <a href="https://github.com/fboehm/qtl2pleio" class="uri">https://github.com/fboehm/qtl2pleio</a></p></li>
+</ul>
+</div>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<ul>
+<li><p>Experimentalists can now measure tens of thousands of phenotypes with RNA sequencing and mass spectrometry</p></li>
+<li><p>Multiparental populations enable high-resolution QTL mapping</p></li>
+<li><p>Together, high-dimensional phenotypes and multiparental populations can inform complex trait genetics</p></li>
+<li><p>New analysis tools, such as our test of pleiotropy vs. separate QTL, are needed</p></li>
+</ul>
+</div>
+<div id="background" class="section level2">
+<h2>Background</h2>
+<ul>
+<li><span class="citation">Jiang and Zeng (1995)</span> developed a pleiotropy vs. separate QTL test for F2 mice
+<ul>
+<li>Applies to two traits that map to a single genomic region</li>
+<li>Pleiotropy is the null hypothesis</li>
+<li>Separate QTL is the alternative hypothesis</li>
+<li>Perform a two-dimensional QTL scan</li>
+<li>Calculate likelihood ratio test statistic</li>
+</ul></li>
+</ul>
+</div>
+<div id="challenges" class="section level2">
+<h2>Challenges</h2>
+<ul>
+<li>Relatedness<br />
+</li>
+<li>Multiple founder lines<br />
+</li>
+<li>Test statistic calibration</li>
+</ul>
+</div>
+<div id="solutions-to-challenges" class="section level2">
+<h2>Solutions to challenges</h2>
+<ul>
+<li>Multivariate random effects to account for relatedness<br />
+</li>
+<li>Fixed effect for each founder allele<br />
+</li>
+<li>Parametric bootstrap for test statistic calibration</li>
+</ul>
+</div>
+</div>
+<div id="section-1" class="section level1 col-3">
+<h1></h1>
+<div id="test-procedure" class="section level2">
+<h2>Test procedure</h2>
+<ul>
+<li>Fit the model: <span class="math display">\[Y = XB + G + E\]</span> for each ordered pair of markers
+<ul>
+<li><span class="math display">\[G \sim MN(0, K, V_g)\]</span><br />
+</li>
+<li><span class="math display">\[E \sim MN(0, I, V_e)\]</span><br />
+</li>
+<li><span class="math inline">\(X\)</span> contains allele probabilities<br />
+</li>
+<li><span class="math inline">\(B\)</span> contains allele effects<br />
+</li>
+</ul></li>
+<li>Calculate likelihood for each model fit<br />
+</li>
+<li>Test statistic: <span class="math display">\[- \log_{10} \frac{\max L_0(B, \Sigma, \omega_1, \omega_2)}{\max L_A(B, \Sigma, \omega_1, \omega_2)}\]</span><br />
+</li>
+<li>Parametric bootstrap to get p-value</li>
+</ul>
+</div>
+<div id="behavioral-genetics" class="section level2">
+<h2>Behavioral genetics</h2>
+<ul>
+<li><span class="citation">Logan et al. (2013)</span> and <span class="citation">Recla et al. (2014)</span> genotyped and phenotyped 261 Diversity Outbred mice
+<ul>
+<li>Identified <em>Hydin</em> as the chromosome 8 gene affecting “hot plate latency” at 57 cM</li>
+<li>Identified chromosome 8 QTLs for “percent time in light” and “distance traveled in light” at 55 cM<br />
+</li>
+<li>Motivated us to ask if <em>Hydin</em> also affects “percent time in light” and “distance traveled in light”</li>
+</ul></li>
+</ul>
+</div>
+<div id="allele-effects-plots" class="section level2">
+<h2>Allele effects plots</h2>
+<ul>
+<li>Suggest that “percent time in light” and “distance traveled in light” share a single QTL</li>
+<li><em>Hydin</em> is distinct from that QTL</li>
+</ul>
+<p><img src="/Users/frederickboehm/Box%20Sync/attie/qtl2pleio-manuscript/Rmd/coef_all3.svg" /><!-- --></p>
+</div>
+</div>
+<div id="section-2" class="section level1 col-3">
+<h1></h1>
+<div id="profile-lod-plots" class="section level2">
+<h2>Profile LOD plots</h2>
+<ul>
+<li>Performed 3 pairwise analyses</li>
+</ul>
+<p><img src="/Users/frederickboehm/Box%20Sync/attie/qtl2pleio-manuscript/Rmd/all3.svg" /><!-- --></p>
+</div>
+<div id="pairwise-tests" class="section level2">
+<h2>3 pairwise tests</h2>
+<ul>
+<li>“percent time in light” &amp; “hot plate latency”: p = 0.109</li>
+<li>“distance traveled in light” &amp; “hot plate latency”: p = 0.108</li>
+<li>“percent time in light” &amp; “distance traveled in light”: p = 0.871</li>
+</ul>
+</div>
+<div id="conclusions" class="section level2">
+<h2>Conclusions</h2>
+<ul>
+<li>Evidence for two separate QTL affecting the 3 phenotypes
+<ul>
+<li>1 QTL affects both “distance traveled in light” and “percent time in light”</li>
+<li>Second QTL contains <em>Hydin</em> and affects “hot plate latency”</li>
+</ul></li>
+</ul>
+</div>
+<div id="future-directions" class="section level2">
+<h2>Future directions</h2>
+<ul>
+<li>Develop methods for analyzing multiple phenotypes in a single test</li>
+</ul>
+</div>
+<div id="contact-information" class="section level2">
+<h2>Contact information</h2>
+<p>Fred Boehm<br />
+EMAIL: <a href="mailto:frederick.boehm@gmail.com">frederick.boehm@gmail.com</a><br />
+WEBSITE: <a href="https://fboehm.us/" class="uri">https://fboehm.us/</a><br />
+ORCID: 0000-0002-1644-5931</p>
+</div>
+<div id="references" class="section level2 unnumbered">
+<h2>References</h2>
+<div id="refs" class="references">
+<div id="ref-jiang1995multiple">
+<p>Jiang, Changjian, and Zhao-Bang Zeng. 1995. “Multiple Trait Analysis of Genetic Mapping for Quantitative Trait Loci.” <em>Genetics</em> 140 (3). Genetics Soc America: 1111–27.</p>
+</div>
+<div id="ref-logan2013high">
+<p>Logan, Ryan W, Raymond F Robledo, Jill M Recla, Vivek M Philip, Jason A Bubier, Jeremy J Jay, Carter Harwood, et al. 2013. “High-Precision Genetic Mapping of Behavioral Traits in the Diversity Outbred Mouse Population.” <em>Genes, Brain and Behavior</em> 12 (4). Wiley Online Library: 424–37.</p>
+</div>
+<div id="ref-recla2014precise">
+<p>Recla, Jill M, Raymond F Robledo, Daniel M Gatti, Carol J Bult, Gary A Churchill, and Elissa J Chesler. 2014. “Precise Genetic Mapping and Integrative Bioinformatics in Diversity Outbred Mice Reveals Hydin as a Novel Pain Gene.” <em>Mammalian Genome</em> 25 (5-6). Springer: 211–22.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+  </body>
+</html>

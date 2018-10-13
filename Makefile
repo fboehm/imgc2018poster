@@ -1,15 +1,15 @@
-PDF_FILE=Rmd/*.pdf
+PDF_FILE=imgc-2018-poster/imgc-2018-poster.pdf
 
-HTML_FILE=Rmd/*.html
+HTML_FILE=imgc-2018-poster/imgc-2018-poster.html
 
-RMD_FILE=Rmd/*.Rmd
+RMD_FILE=imgc-2018-poster/imgc-2018-poster.Rmd
 
 all : $(PDF_FILE)
 	echo All files are now up to date.
 
 $(PDF_FILE) : $(HTML_FILE)
-	decktape remark $(HTML_FILE) $(PDF_FILE)
-
+	wkhtmltopdf  $(HTML_FILE) $(PDF_FILE)
+	
 $(HTML_FILE) : $(RMD_FILE) 
 	Rscript -e 'rmarkdown::render("$<")'
 	
