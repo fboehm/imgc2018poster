@@ -17,7 +17,7 @@ html {
 
 @media screen {
 	html {
-		zoom: 0.33;
+		zoom: 1;
 		margin: auto;
 	}
 }

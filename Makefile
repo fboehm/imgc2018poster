@@ -17,5 +17,5 @@ $(PDF_FILE) : $(HTML_FILE)
 	
 .PHONY : clean
 clean : 
-	- rm $(HTML_FILE)
+	- rm $(HTML_FILE) $(PDF_FILE)
 	

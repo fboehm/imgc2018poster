@@ -15,3 +15,13 @@ I can almost get google chrome from the command line to work. It is just failing
 
 The above produces a pdf but without correct math rendering. It's as if we need to 'wait' for the math rendering or add option to use mathjax.
 
+## Makefile update
+
+I started using decktape, but I can't seem to get the pdf to be the right size. I may just need to manually print from google chrome.
+
+## Makefile update again
+
+I changed the zoom parameter in the page.css file and retried the make. It worked!!
+
+I set zoom to 1 instead of the default 0.33.
+

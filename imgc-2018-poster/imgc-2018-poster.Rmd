@@ -2,7 +2,6 @@
 title: "Testing pleiotropy vs. separate QTL in multiparental populations"
 author: "Frederick J. Boehm, Brian S. Yandell, and Karl W. Broman"
 bibliography: research.bib
-pdfSeparateFragments: false
 output:
   drposter::drposter_poster
 ---
@@ -100,7 +99,7 @@ include_graphics("~/Box Sync/attie/qtl2pleio-manuscript/Rmd/all3.svg", auto_pdf 
 
 ## Conclusions
 
-- Evidence for two separate QTL affecting the 3 phenotypes    
+- Evidence for two separate QTL affecting the 3 traits    
     - 1 QTL affects both "distance traveled in light" and "percent time in light"   
     - Second QTL contains *Hydin* and affects "hot plate latency"    
 
