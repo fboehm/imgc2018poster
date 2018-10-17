@@ -1,6 +1,6 @@
 ---
 title: "Testing pleiotropy vs. separate QTL in multiparental populations"
-author: "Frederick J. Boehm, Brian S. Yandell, and Karl W. Broman"
+author: ["<span class=\"presenter\">Frederick Boehm</span>, Brian Yandell, Karl Broman<ol class=\"affiliations\">University of Wisconsin-Madison, Madison, Wisconsin, USA"]
 bibliography: research.bib
 output:
   drposter::drposter_poster
@@ -16,11 +16,11 @@ library(knitr)
 
 ## Abstract
 
-- High-dimensional phenotypes in multiparental populations provide new opportunities for understanding complex trait architecture    
-- New analysis tools are required    
-- We developed a test of pleiotropy vs. separate QTL for multiparental populations    
-- We applied it to find evidence for separate QTL for behavioral phenotypes in a 3 cM region in 261 Diversity Outbred mice    
-- We share our methods in an R package, `qtl2pleio` https://github.com/fboehm/qtl2pleio    
+- High-dimensional phenotypes & multiparental populations inform complex trait architecture    
+- New analysis tools needed    
+- Developed a test of pleiotropy vs. separate QTL for multiparental populations    
+- Found evidence for two separate QTL affecting three behavioral traits in a 3 cM region in 261 Diversity Outbred mice    
+- Shared methods in an R package, `qtl2pleio` https://github.com/fboehm/qtl2pleio    
 
 
 ## Introduction
@@ -108,6 +108,7 @@ include_graphics("~/Box Sync/attie/qtl2pleio-manuscript/Rmd/all3.svg", auto_pdf 
 - Examine expression data from @keller2018genetic    
     - Expression QTL hotspot dissection    
     - Statistical power studies
+    - Comparisons with mediation test results
 
 
 ## Contact information
@@ -116,6 +117,7 @@ Fred Boehm
 EMAIL: frederick.boehm@gmail.com  
 WEBSITE: https://fboehm.us/  
 ORCID: 0000-0002-1644-5931  
+`qtl2pleio` R package: https://github.com/fboehm/qtl2pleio
 
 
 ## References
