@@ -23,53 +23,54 @@
 <div id="abstract" class="section level2">
 <h2>Abstract</h2>
 <ul>
-<li><p>High-dimensional phenotypes in multiparental populations provide new opportunities for understanding complex trait architecture</p></li>
-<li><p>New analysis tools are required</p></li>
-<li><p>We developed a test of pleiotropy vs. separate QTL for multiparental populations</p></li>
-<li><p>We applied it to find evidence for separate QTL for behavioral phenotypes in a 3 cM region in 261 Diversity Outbred mice</p></li>
-<li><p>We share our methods in an R package, <code>qtl2pleio</code> <a href="https://github.com/fboehm/qtl2pleio" class="uri">https://github.com/fboehm/qtl2pleio</a></p></li>
+<li>High-dimensional phenotypes in multiparental populations provide new opportunities for understanding complex trait architecture<br />
+</li>
+<li>New analysis tools are required<br />
+</li>
+<li>We developed a test of pleiotropy vs. separate QTL for multiparental populations<br />
+</li>
+<li>We applied it to find evidence for separate QTL for behavioral phenotypes in a 3 cM region in 261 Diversity Outbred mice<br />
+</li>
+<li>We share our methods in an R package, <code>qtl2pleio</code> <a href="https://github.com/fboehm/qtl2pleio" class="uri">https://github.com/fboehm/qtl2pleio</a></li>
 </ul>
 </div>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
 <ul>
-<li><p>Experimentalists can now measure tens of thousands of phenotypes with RNA sequencing and mass spectrometry</p></li>
-<li><p>Multiparental populations enable high-resolution QTL mapping</p></li>
-<li><p>Together, high-dimensional phenotypes and multiparental populations can inform complex trait genetics</p></li>
-<li><p>New analysis tools, such as our test of pleiotropy vs. separate QTL, are needed</p></li>
+<li>Experimentalists can now measure tens of thousands of phenotypes with RNA sequencing and mass spectrometry<br />
+</li>
+<li>Multiparental populations enable high-resolution QTL mapping<br />
+</li>
+<li>Together, high-dimensional phenotypes and multiparental populations can inform complex trait genetics<br />
+</li>
+<li>New analysis tools, such as our test of pleiotropy vs. separate QTL, are needed</li>
 </ul>
 </div>
 <div id="background" class="section level2">
 <h2>Background</h2>
 <ul>
-<li><span class="citation">Jiang and Zeng (1995)</span> developed a pleiotropy vs. separate QTL test for F2 mice
+<li><span class="citation">Jiang and Zeng (1995)</span> developed a pleiotropy vs. separate QTL test for two-parent crosses
 <ul>
-<li>Applies to two traits that map to a single genomic region</li>
-<li>Pleiotropy is the null hypothesis</li>
-<li>Separate QTL is the alternative hypothesis</li>
-<li>Perform a two-dimensional QTL scan</li>
+<li>Applies to two traits that map to a single genomic region<br />
+</li>
+<li>Pleiotropy is the null hypothesis<br />
+</li>
+<li>Separate QTL is the alternative hypothesis<br />
+</li>
+<li>Perform a two-dimensional QTL scan<br />
+</li>
 <li>Calculate likelihood ratio test statistic</li>
 </ul></li>
 </ul>
 </div>
-<div id="challenges" class="section level2">
-<h2>Challenges</h2>
+<div id="challenges-in-multiparental-populations" class="section level2">
+<h2>Challenges in multiparental populations</h2>
 <ul>
-<li>Relatedness<br />
+<li>Relatedness: <em>Multivariate polygenic random effects</em><br />
 </li>
-<li>Multiple founder lines<br />
+<li>Eight founder lines: <em>8 fixed effects</em><br />
 </li>
-<li>Test statistic calibration</li>
-</ul>
-</div>
-<div id="solutions-to-challenges" class="section level2">
-<h2>Solutions to challenges</h2>
-<ul>
-<li>Multivariate random effects to account for relatedness<br />
-</li>
-<li>Fixed effect for each founder allele<br />
-</li>
-<li>Parametric bootstrap for test statistic calibration</li>
+<li>Test statistic calibration: <em>Parametric bootstrap test</em></li>
 </ul>
 </div>
 </div>
@@ -91,7 +92,7 @@
 </ul></li>
 <li>Calculate likelihood for each model fit<br />
 </li>
-<li>Test statistic: <span class="math display">\[- \log_{10} \frac{\max L_0(B, \Sigma, \omega_1, \omega_2)}{\max L_A(B, \Sigma, \omega_1, \omega_2)}\]</span><br />
+<li>Test statistic: <span class="math display">\[- \log_{10} \frac{\max L_0(B, \Sigma, \omega_1)}{\max L_A(B, \Sigma, \omega_1, \omega_2)}\]</span><br />
 </li>
 <li>Parametric bootstrap to get p-value</li>
 </ul>
@@ -111,7 +112,8 @@
 <div id="allele-effects-plots" class="section level2">
 <h2>Allele effects plots</h2>
 <ul>
-<li>Suggest that “percent time in light” and “distance traveled in light” share a single QTL</li>
+<li>Suggest that “percent time in light” and “distance traveled in light” share a single QTL<br />
+</li>
 <li><em>Hydin</em> is distinct from that QTL</li>
 </ul>
 <p><img src="/Users/frederickboehm/Box%20Sync/attie/qtl2pleio-manuscript/Rmd/coef_all3.svg" /><!-- --></p>
@@ -129,8 +131,10 @@
 <div id="pairwise-tests" class="section level2">
 <h2>3 pairwise tests</h2>
 <ul>
-<li>“percent time in light” &amp; “hot plate latency”: p = 0.109</li>
-<li>“distance traveled in light” &amp; “hot plate latency”: p = 0.108</li>
+<li>“percent time in light” &amp; “hot plate latency”: p = 0.109<br />
+</li>
+<li>“distance traveled in light” &amp; “hot plate latency”: p = 0.108<br />
+</li>
 <li>“percent time in light” &amp; “distance traveled in light”: p = 0.871</li>
 </ul>
 </div>
@@ -139,7 +143,8 @@
 <ul>
 <li>Evidence for two separate QTL affecting the 3 phenotypes
 <ul>
-<li>1 QTL affects both “distance traveled in light” and “percent time in light”</li>
+<li>1 QTL affects both “distance traveled in light” and “percent time in light”<br />
+</li>
 <li>Second QTL contains <em>Hydin</em> and affects “hot plate latency”</li>
 </ul></li>
 </ul>
@@ -147,7 +152,12 @@
 <div id="future-directions" class="section level2">
 <h2>Future directions</h2>
 <ul>
-<li>Develop methods for analyzing multiple phenotypes in a single test</li>
+<li>Examine expression data from <span class="citation">Keller et al. (2018)</span>
+<ul>
+<li>Expression QTL hotspot dissection<br />
+</li>
+<li>Statistical power studies</li>
+</ul></li>
 </ul>
 </div>
 <div id="contact-information" class="section level2">
@@ -162,6 +172,9 @@ ORCID: 0000-0002-1644-5931</p>
 <div id="refs" class="references">
 <div id="ref-jiang1995multiple">
 <p>Jiang, Changjian, and Zhao-Bang Zeng. 1995. “Multiple Trait Analysis of Genetic Mapping for Quantitative Trait Loci.” <em>Genetics</em> 140 (3). Genetics Soc America: 1111–27.</p>
+</div>
+<div id="ref-keller2018genetic">
+<p>Keller, Mark P, Daniel M Gatti, Kathryn L Schueler, Mary E Rabaglia, Donnie S Stapleton, Petr Simecek, Matthew Vincent, et al. 2018. “Genetic Drivers of Pancreatic Islet Function.” <em>Genetics</em>. Genetics Soc America, genetics–300864.</p>
 </div>
 <div id="ref-logan2013high">
 <p>Logan, Ryan W, Raymond F Robledo, Jill M Recla, Vivek M Philip, Jason A Bubier, Jeremy J Jay, Carter Harwood, et al. 2013. “High-Precision Genetic Mapping of Behavioral Traits in the Diversity Outbred Mouse Population.” <em>Genes, Brain and Behavior</em> 12 (4). Wiley Online Library: 424–37.</p>

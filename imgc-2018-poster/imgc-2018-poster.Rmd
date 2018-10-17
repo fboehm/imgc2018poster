@@ -2,10 +2,9 @@
 title: "Testing pleiotropy vs. separate QTL in multiparental populations"
 author: "Frederick J. Boehm, Brian S. Yandell, and Karl W. Broman"
 bibliography: research.bib
+pdfSeparateFragments: false
 output:
-  drposter::drposter_poster:
-    self_contained: false
-    css: custom.css
+  drposter::drposter_poster
 ---
 
 ```{r, echo = FALSE}
@@ -18,47 +17,35 @@ library(knitr)
 
 ## Abstract
 
-- High-dimensional phenotypes in multiparental populations provide new opportunities for understanding complex trait architecture
-
-- New analysis tools are required
-
-- We developed a test of pleiotropy vs. separate QTL for multiparental populations
-
-- We applied it to find evidence for separate QTL for behavioral phenotypes in a 3 cM region in 261 Diversity Outbred mice
-
-- We share our methods in an R package, `qtl2pleio` https://github.com/fboehm/qtl2pleio
+- High-dimensional phenotypes in multiparental populations provide new opportunities for understanding complex trait architecture    
+- New analysis tools are required    
+- We developed a test of pleiotropy vs. separate QTL for multiparental populations    
+- We applied it to find evidence for separate QTL for behavioral phenotypes in a 3 cM region in 261 Diversity Outbred mice    
+- We share our methods in an R package, `qtl2pleio` https://github.com/fboehm/qtl2pleio    
 
 
 ## Introduction
 
-- Experimentalists can now measure tens of thousands of phenotypes with RNA sequencing and mass spectrometry
-
-- Multiparental populations enable high-resolution QTL mapping
-
-- Together, high-dimensional phenotypes and multiparental populations can inform complex trait genetics
-
-- New analysis tools, such as our test of pleiotropy vs. separate QTL, are needed 
+- Experimentalists can now measure tens of thousands of phenotypes with RNA sequencing and mass spectrometry    
+- Multiparental populations enable high-resolution QTL mapping    
+- Together, high-dimensional phenotypes and multiparental populations can inform complex trait genetics    
+- New analysis tools, such as our test of pleiotropy vs. separate QTL, are needed    
 
 ## Background
 
-- @jiang1995multiple developed a pleiotropy vs. separate QTL test for F2 mice
-    - Applies to two traits that map to a single genomic region 
-    - Pleiotropy is the null hypothesis
-    - Separate QTL is the alternative hypothesis
-    - Perform a two-dimensional QTL scan 
-    - Calculate likelihood ratio test statistic
+- @jiang1995multiple developed a pleiotropy vs. separate QTL test for two-parent crosses  
+    - Applies to two traits that map to a single genomic region  
+    - Pleiotropy is the null hypothesis  
+    - Separate QTL is the alternative hypothesis  
+    - Perform a two-dimensional QTL scan   
+    - Calculate likelihood ratio test statistic  
 
-## Challenges
+## Challenges in multiparental populations
 
-- Relatedness    
-- Multiple founder lines    
-- Test statistic calibration
+- Relatedness: *Multivariate polygenic random effects*    
+- Eight founder lines: *8 fixed effects*   
+- Test statistic calibration: *Parametric bootstrap test*
 
-## Solutions to challenges
-
-- Multivariate random effects to account for relatedness    
-- Fixed effect for each founder allele    
-- Parametric bootstrap for test statistic calibration
 
 # {.col-3}
 
@@ -71,7 +58,7 @@ library(knitr)
     - $X$ contains allele probabilities    
     - $B$ contains allele effects    
 - Calculate likelihood for each model fit    
-- Test statistic: $$- \log_{10} \frac{\max L_0(B, \Sigma, \omega_1, \omega_2)}{\max L_A(B, \Sigma, \omega_1, \omega_2)}$$    
+- Test statistic: $$- \log_{10} \frac{\max L_0(B, \Sigma, \omega_1)}{\max L_A(B, \Sigma, \omega_1, \omega_2)}$$    
 - Parametric bootstrap to get p-value
 
 
@@ -85,7 +72,7 @@ library(knitr)
 
 ## Allele effects plots
 
-- Suggest that "percent time in light" and "distance traveled in light" share a single QTL
+- Suggest that "percent time in light" and "distance traveled in light" share a single QTL    
 - *Hydin* is distinct from that QTL
 
 ```{r, echo = FALSE}
@@ -96,9 +83,7 @@ include_graphics("~/Box Sync/attie/qtl2pleio-manuscript/Rmd/coef_all3.svg")
 # {.col-3}
 
 
-## Profile LOD plots
-
-- Performed 3 pairwise analyses
+## Profile LOD plots for pairwise tests
 
 ```{r, echo = FALSE}
 include_graphics("~/Box Sync/attie/qtl2pleio-manuscript/Rmd/all3.svg", auto_pdf = FALSE)
@@ -107,19 +92,22 @@ include_graphics("~/Box Sync/attie/qtl2pleio-manuscript/Rmd/all3.svg", auto_pdf 
 
 ## 3 pairwise tests
 
-- "percent time in light" & "hot plate latency": p = 0.109
-- "distance traveled in light" & "hot plate latency": p = 0.108
-- "percent time in light" & "distance traveled in light": p = 0.871
+- "percent time in light" & "hot plate latency": p = 0.109    
+- "distance traveled in light" & "hot plate latency": p = 0.108    
+- "percent time in light" & "distance traveled in light": p = 0.871    
 
 ## Conclusions
 
-- Evidence for two separate QTL affecting the 3 phenotypes
-    - 1 QTL affects both "distance traveled in light" and "percent time in light"
-    - Second QTL contains *Hydin* and affects "hot plate latency"
+- Evidence for two separate QTL affecting the 3 phenotypes    
+    - 1 QTL affects both "distance traveled in light" and "percent time in light"   
+    - Second QTL contains *Hydin* and affects "hot plate latency"    
 
 ## Future directions
 
-- Develop methods for analyzing multiple phenotypes in a single test
+- Examine expression data from @keller2018genetic    
+    - Expression QTL hotspot dissection    
+    - Statistical power studies
+
 
 ## Contact information
 
