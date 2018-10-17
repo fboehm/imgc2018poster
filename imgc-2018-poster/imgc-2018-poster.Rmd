@@ -40,14 +40,12 @@ library(knitr)
     - Perform a two-dimensional QTL scan   
     - Calculate likelihood ratio test statistic  
 
-## Challenges in multiparental populations
+## Challenges
 
 - Relatedness: *Multivariate polygenic random effects*    
 - Eight founder lines: *8 fixed effects*   
 - Test statistic calibration: *Parametric bootstrap test*
 
-
-# {.col-3}
 
 
 ## Test procedure
@@ -63,6 +61,10 @@ library(knitr)
 
 
 
+# {.col-3}
+
+
+
 ## Behavioral genetics
 
 - @logan2013high and @recla2014precise genotyped and phenotyped 261 Diversity Outbred mice    
@@ -72,15 +74,10 @@ library(knitr)
 
 ## Allele effects plots
 
-- Suggest that "percent time in light" and "distance traveled in light" share a single QTL    
-- *Hydin* is distinct from that QTL
 
 ```{r, echo = FALSE}
 include_graphics("~/Box Sync/attie/qtl2pleio-manuscript/Rmd/coef_all3.svg")
 ```
-
-
-# {.col-3}
 
 
 ## Profile LOD plots for pairwise tests
@@ -88,6 +85,11 @@ include_graphics("~/Box Sync/attie/qtl2pleio-manuscript/Rmd/coef_all3.svg")
 ```{r, echo = FALSE}
 include_graphics("~/Box Sync/attie/qtl2pleio-manuscript/Rmd/all3.svg", auto_pdf = FALSE)
 ```
+
+
+
+# {.col-3}
+
 
 
 ## 3 pairwise tests
