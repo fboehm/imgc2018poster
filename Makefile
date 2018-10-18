@@ -13,7 +13,7 @@ $(HTML_FILE) : $(RMD_FILE)
 	Rscript -e 'rmarkdown::render("$<")'
 
 $(PDF_FILE) : $(HTML_FILE)
-	decktape $(HTML_FILE) $(PDF_FILE)
+	decktape -s '4000x5000' $(HTML_FILE) $(PDF_FILE)
 	
 .PHONY : clean
 clean : 

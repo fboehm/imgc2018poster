@@ -1,6 +1,6 @@
 ---
 title: "Testing pleiotropy vs. separate QTL in multiparental populations"
-author: ["<span class=\"presenter\">Frederick Boehm</span>, Brian Yandell, Karl Broman<ol class=\"affiliations\">University of Wisconsin-Madison, Madison, Wisconsin, USA"]
+author: ["<span class=\"presenter\">Frederick J. Boehm</span>, Brian S. Yandell, & Karl W. Broman<ol class=\"affiliations\">University of Wisconsin-Madison, Madison, Wisconsin, USA"]
 bibliography: research.bib
 output:
   drposter::drposter_poster
@@ -19,23 +19,23 @@ library(knitr)
 - High-dimensional phenotypes & multiparental populations inform complex trait architecture    
 - New analysis tools needed    
 - Developed a test of pleiotropy vs. separate QTL for multiparental populations    
-- Found evidence for two separate QTL affecting three behavioral traits in a 3 cM region in 261 Diversity Outbred mice    
+- Evidence for two separate QTL affecting three behavioral traits in a 3 cM region        
 - Shared methods in an R package, `qtl2pleio` https://github.com/fboehm/qtl2pleio    
 
 
 ## Introduction
 
-- Experimentalists can now measure tens of thousands of phenotypes with RNA sequencing and mass spectrometry    
+- Experimentalists measure thousands of phenotypes with RNA sequencing and mass spectrometry    
 - Multiparental populations enable high-resolution QTL mapping    
-- Together, high-dimensional phenotypes and multiparental populations can inform complex trait genetics    
+- Together, they inform complex trait genetics    
 - New analysis tools, such as our test of pleiotropy vs. separate QTL, are needed    
 
 ## Background
 
 - @jiang1995multiple developed a pleiotropy vs. separate QTL test for two-parent crosses  
     - Applies to two traits that map to a single genomic region  
-    - Pleiotropy is the null hypothesis  
-    - Separate QTL is the alternative hypothesis  
+    - Null hypothesis: pleiotropy   
+    - Alternative: presence of two separate QTL      
     - Perform a two-dimensional QTL scan   
     - Calculate likelihood ratio test statistic  
 
@@ -43,20 +43,19 @@ library(knitr)
 
 - Relatedness: *Multivariate polygenic random effects*    
 - Eight founder lines: *8 fixed effects*   
-- Test statistic calibration: *Parametric bootstrap test*
-
+- Test statistic calibration: *Parametric bootstrap test*    
 
 
 ## Test procedure
 
-- Fit the model: $$Y = XB + G + E$$ for each ordered pair of markers
+- Fit the model: $$Y = XB + G + E$$ for each ordered pair of markers  
     - $$G \sim MN(0, K, V_g)$$    
     - $$E \sim MN(0, I, V_e)$$    
     - $X$ contains allele probabilities    
     - $B$ contains allele effects    
 - Calculate likelihood for each model fit    
 - Test statistic: $$- \log_{10} \frac{\max L_0(B, \Sigma, \omega_1)}{\max L_A(B, \Sigma, \omega_1, \omega_2)}$$    
-- Parametric bootstrap to get p-value
+- Parametric bootstrap to get p-value    
 
 
 
@@ -67,8 +66,8 @@ library(knitr)
 ## Behavioral genetics
 
 - @logan2013high and @recla2014precise genotyped and phenotyped 261 Diversity Outbred mice    
-    - Identified *Hydin* as the chromosome 8 gene affecting "hot plate latency" at 57 cM
-    - Identified chromosome 8 QTLs for "percent time in light" and "distance traveled in light" at 55 cM    
+    - Identified *Hydin* as the Chr 8 gene affecting "hot plate latency" at 57 cM    
+    - Identified Chr 8 QTLs for "percent time in light" and "distance traveled in light" at 55 cM    
     - Motivated us to ask if *Hydin* also affects "percent time in light" and "distance traveled in light"    
 
 ## Allele effects plots
@@ -93,9 +92,20 @@ include_graphics("~/Box Sync/attie/qtl2pleio-manuscript/Rmd/all3.svg", auto_pdf 
 
 ## 3 pairwise tests
 
-- "percent time in light" & "hot plate latency": p = 0.109    
-- "distance traveled in light" & "hot plate latency": p = 0.108    
-- "percent time in light" & "distance traveled in light": p = 0.871    
+```{r, echo = FALSE, results='hide'}
+options(tidyverse.quiet = TRUE)
+library(tidyverse, quietly = TRUE)
+```
+
+
+
+```{r, echo = FALSE}
+tr1 <- c("pct. time in light", "distance traveled", "pct. time in light")
+tr2 <- c("hot plate latency", "hot plate latency", "distance traveled")
+pv <- c(0.109, 0.108, 0.871)
+tibble(Trait1 = tr1, Trait2 = tr2, pvalue = pv) %>%
+  kable()
+```
 
 ## Conclusions
 
@@ -105,7 +115,8 @@ include_graphics("~/Box Sync/attie/qtl2pleio-manuscript/Rmd/all3.svg", auto_pdf 
 
 ## Future directions
 
-- Examine expression data from @keller2018genetic    
+- Examine expression data from @keller2018genetic
+    - 378 Diversity Outbred mice
     - Expression QTL hotspot dissection    
     - Statistical power studies
     - Comparisons with mediation test results

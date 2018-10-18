@@ -14,7 +14,7 @@
 
 <header>
     <h1 class="title">Testing pleiotropy vs. separate QTL in multiparental populations</h1>
-    <h2 class="author"><span class="presenter">Frederick Boehm</span>, Brian Yandell, Karl Broman
+    <h2 class="author"><span class="presenter">Frederick J. Boehm</span>, Brian S. Yandell, &amp; Karl W. Broman
 <ol class="affiliations">
 University of Wisconsin-Madison, Madison, Wisconsin, USA</h2>
 </header>
@@ -30,7 +30,7 @@ University of Wisconsin-Madison, Madison, Wisconsin, USA</h2>
 </li>
 <li>Developed a test of pleiotropy vs. separate QTL for multiparental populations<br />
 </li>
-<li>Found evidence for two separate QTL affecting three behavioral traits in a 3 cM region in 261 Diversity Outbred mice<br />
+<li>Evidence for two separate QTL affecting three behavioral traits in a 3 cM region<br />
 </li>
 <li>Shared methods in an R package, <code>qtl2pleio</code> <a href="https://github.com/fboehm/qtl2pleio" class="uri">https://github.com/fboehm/qtl2pleio</a></li>
 </ul>
@@ -38,11 +38,11 @@ University of Wisconsin-Madison, Madison, Wisconsin, USA</h2>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
 <ul>
-<li>Experimentalists can now measure tens of thousands of phenotypes with RNA sequencing and mass spectrometry<br />
+<li>Experimentalists measure thousands of phenotypes with RNA sequencing and mass spectrometry<br />
 </li>
 <li>Multiparental populations enable high-resolution QTL mapping<br />
 </li>
-<li>Together, high-dimensional phenotypes and multiparental populations can inform complex trait genetics<br />
+<li>Together, they inform complex trait genetics<br />
 </li>
 <li>New analysis tools, such as our test of pleiotropy vs. separate QTL, are needed</li>
 </ul>
@@ -54,9 +54,9 @@ University of Wisconsin-Madison, Madison, Wisconsin, USA</h2>
 <ul>
 <li>Applies to two traits that map to a single genomic region<br />
 </li>
-<li>Pleiotropy is the null hypothesis<br />
+<li>Null hypothesis: pleiotropy<br />
 </li>
-<li>Separate QTL is the alternative hypothesis<br />
+<li>Alternative: presence of two separate QTL<br />
 </li>
 <li>Perform a two-dimensional QTL scan<br />
 </li>
@@ -103,8 +103,9 @@ University of Wisconsin-Madison, Madison, Wisconsin, USA</h2>
 <ul>
 <li><span class="citation">Logan et al. (2013)</span> and <span class="citation">Recla et al. (2014)</span> genotyped and phenotyped 261 Diversity Outbred mice
 <ul>
-<li>Identified <em>Hydin</em> as the chromosome 8 gene affecting “hot plate latency” at 57 cM</li>
-<li>Identified chromosome 8 QTLs for “percent time in light” and “distance traveled in light” at 55 cM<br />
+<li>Identified <em>Hydin</em> as the Chr 8 gene affecting “hot plate latency” at 57 cM<br />
+</li>
+<li>Identified Chr 8 QTLs for “percent time in light” and “distance traveled in light” at 55 cM<br />
 </li>
 <li>Motivated us to ask if <em>Hydin</em> also affects “percent time in light” and “distance traveled in light”</li>
 </ul></li>
@@ -123,13 +124,32 @@ University of Wisconsin-Madison, Madison, Wisconsin, USA</h2>
 <h1></h1>
 <div id="pairwise-tests" class="section level2">
 <h2>3 pairwise tests</h2>
-<ul>
-<li>“percent time in light” &amp; “hot plate latency”: p = 0.109<br />
-</li>
-<li>“distance traveled in light” &amp; “hot plate latency”: p = 0.108<br />
-</li>
-<li>“percent time in light” &amp; “distance traveled in light”: p = 0.871</li>
-</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Trait1</th>
+<th align="left">Trait2</th>
+<th align="right">pvalue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">pct. time in light</td>
+<td align="left">hot plate latency</td>
+<td align="right">0.109</td>
+</tr>
+<tr class="even">
+<td align="left">distance traveled</td>
+<td align="left">hot plate latency</td>
+<td align="right">0.108</td>
+</tr>
+<tr class="odd">
+<td align="left">pct. time in light</td>
+<td align="left">distance traveled</td>
+<td align="right">0.871</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="conclusions" class="section level2">
 <h2>Conclusions</h2>
@@ -147,9 +167,11 @@ University of Wisconsin-Madison, Madison, Wisconsin, USA</h2>
 <ul>
 <li>Examine expression data from <span class="citation">Keller et al. (2018)</span>
 <ul>
+<li>378 Diversity Outbred mice</li>
 <li>Expression QTL hotspot dissection<br />
 </li>
 <li>Statistical power studies</li>
+<li>Comparisons with mediation test results</li>
 </ul></li>
 </ul>
 </div>
