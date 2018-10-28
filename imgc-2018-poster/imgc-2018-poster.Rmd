@@ -25,7 +25,7 @@ library(knitr)
 
 ## Introduction
 
-- Experimentalists measure thousands of phenotypes with RNA sequencing and mass spectrometry    
+- RNA sequencing and mass spectrometry enable measurement of thousands of phenotypes    
 - Multiparental populations enable high-resolution QTL mapping    
 - Together, they inform complex trait genetics    
 - New analysis tools, such as our test of pleiotropy vs. separate QTL, are needed    
@@ -46,9 +46,9 @@ library(knitr)
 - Test statistic calibration: *Parametric bootstrap test*    
 
 
-## Test procedure
+## Procedure
 
-- Fit the model: $$Y = XB + G + E$$ for each ordered pair of markers  
+- Fit the model for each marker pair: $$vec(Y) = Xvec(B) + vec(G) + vec(E)$$   
     - $$G \sim MN(0, K, V_g)$$    
     - $$E \sim MN(0, I, V_e)$$    
     - $X$ contains allele probabilities    
@@ -65,12 +65,12 @@ library(knitr)
 
 ## Behavioral genetics
 
-- @logan2013high and @recla2014precise genotyped and phenotyped 261 Diversity Outbred mice    
+- @logan2013high and @recla2014precise examined 261 Diversity Outbred mice    
     - Identified *Hydin* as the Chr 8 gene affecting "hot plate latency" at 57 cM    
-    - Identified Chr 8 QTLs for "percent time in light" and "distance traveled in light" at 55 cM    
-    - Motivated us to ask if *Hydin* also affects "percent time in light" and "distance traveled in light"    
+    - Identified Chr 8 QTL for "percent time in light" and "distance traveled in light" at 55 cM    
+    - Does *Hydin* affect "percent time in light" and "distance traveled in light"?    
 
-## Allele effects plots
+## Allele effects
 
 
 ```{r, echo = FALSE}
@@ -78,7 +78,7 @@ include_graphics("~/Box Sync/attie/qtl2pleio-manuscript/Rmd/coef_all3.svg")
 ```
 
 
-## Profile LOD plots for pairwise tests
+## Profile LODs
 
 ```{r, echo = FALSE}
 include_graphics("~/Box Sync/attie/qtl2pleio-manuscript/Rmd/all3.svg", auto_pdf = FALSE)
@@ -115,11 +115,11 @@ tibble(Trait1 = tr1, Trait2 = tr2, pvalue = pv) %>%
 
 ## Future directions
 
-- Examine expression data from @keller2018genetic
-    - 378 Diversity Outbred mice
+- Examine expression data from @keller2018genetic    
+    - 378 Diversity Outbred mice    
     - Expression QTL hotspot dissection    
-    - Statistical power studies
-    - Comparisons with mediation test results
+    - Statistical power studies    
+    - Comparisons with mediation analyses    
 
 
 ## Contact information
@@ -128,7 +128,7 @@ Fred Boehm
 EMAIL: frederick.boehm@gmail.com  
 WEBSITE: https://fboehm.us/  
 ORCID: 0000-0002-1644-5931  
-`qtl2pleio` R package: https://github.com/fboehm/qtl2pleio
+`qtl2pleio` R package: https://github.com/fboehm/qtl2pleio    
 
 
 ## References

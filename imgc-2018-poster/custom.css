@@ -4,5 +4,26 @@
  * from the package, and user styles separated from the overall package.
  */
 
+.level2 {
+	/* Chrome is not handling the background opacity correctly when printing: https://bugs.chromium.org/p/chromium/issues/detail?id=226137 */
+	/* background-color: rgba(255, 255, 255, 0.9); */
+	background-color: rgb(224, 222, 222); /* grey background within each text box */
+}
+
+.slides > header {
+	/* If the background is a complex image, then an overlay may be necessary: */
+	background: lightgray;
+	background: linear-gradient(to bottom, lightgray, white);  /* Overwrites the previous style */
+	border-radius: var(--block-padding);
+	border: 0.25cm solid var(--header-color);
+}
+
+:root {
+	--header-color: #cc0000;
+}
+/******** Default theme, including the background gradients ********/
+:root {
+	--other-color-for-h2-gradient: #800000;
+}
 
 

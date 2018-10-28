@@ -1,7 +1,11 @@
 # imgc2018poster
 materials for International Mammalian Genetics Conference 2018
 
+## Poster logistics
 
+I'm poster number 6. I need to be at the poster itself to present on Tuesday Nov 13 at 4 to 6pm. 
+
+> The poster boards are 40 in wide and 60in  tall. Your poster will be on display for the duration of the meeting
 
 
 
