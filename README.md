@@ -27,5 +27,4 @@ I started using decktape, but I can't seem to get the pdf to be the right size. 
 
 I changed the zoom parameter in the page.css file and retried the make. It worked!!
 
-I set zoom to 1 instead of the default 0.33.
 

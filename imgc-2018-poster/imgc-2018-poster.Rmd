@@ -12,15 +12,7 @@ library(knitr)
 ```
 
 
-# {.col-3}
-
-## Abstract
-
-- High-dimensional phenotypes & multiparental populations inform complex trait architecture    
-- New analysis tools needed    
-- Developed a test of pleiotropy vs. separate QTL for multiparental populations    
-- Evidence for two separate QTL affecting three behavioral traits in a 3 cM region        
-- Shared methods in an R package, `qtl2pleio` https://github.com/fboehm/qtl2pleio    
+# {.col-2}
 
 
 ## Introduction
@@ -48,7 +40,7 @@ library(knitr)
 
 ## Procedure
 
-- Fit the model for each marker pair: $$vec(Y) = Xvec(B) + vec(G) + vec(E)$$   
+- Fit for each marker pair: $$vec(Y) = Xvec(B) + vec(G) + vec(E)$$   
     - $$G \sim MN(0, K, V_g)$$    
     - $$E \sim MN(0, I, V_e)$$    
     - $X$ contains allele probabilities    
@@ -59,7 +51,7 @@ library(knitr)
 
 
 
-# {.col-3}
+
 
 
 
@@ -70,12 +62,18 @@ library(knitr)
     - Identified Chr 8 QTL for "percent time in light" and "distance traveled in light" at 55 cM    
     - Does *Hydin* affect "percent time in light" and "distance traveled in light"?    
 
+
+
+
 ## Allele effects
 
 
 ```{r, echo = FALSE}
 include_graphics("~/Box Sync/attie/qtl2pleio-manuscript/Rmd/coef_all3.svg")
 ```
+
+
+# {.col-2}
 
 
 ## Profile LODs
@@ -85,8 +83,6 @@ include_graphics("~/Box Sync/attie/qtl2pleio-manuscript/Rmd/all3.svg", auto_pdf 
 ```
 
 
-
-# {.col-3}
 
 
 
@@ -106,6 +102,10 @@ pv <- c(0.109, 0.108, 0.871)
 tibble(Trait1 = tr1, Trait2 = tr2, pvalue = pv) %>%
   kable()
 ```
+
+
+
+
 
 ## Conclusions
 

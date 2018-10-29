@@ -4,10 +4,21 @@
  * from the package, and user styles separated from the overall package.
  */
 
+
+@media screen {
+	html {
+		zoom: 1.45;
+		margin: auto;
+	}
+}
+
+
+
 .level2 {
 	/* Chrome is not handling the background opacity correctly when printing: https://bugs.chromium.org/p/chromium/issues/detail?id=226137 */
 	/* background-color: rgba(255, 255, 255, 0.9); */
 	background-color: rgb(224, 222, 222); /* grey background within each text box */
+	/*font-size: 50px;*/
 }
 
 .slides > header {
@@ -26,4 +37,15 @@
 	--other-color-for-h2-gradient: #800000;
 }
 
+@page {
+	size: 900mm 1500mm; /*841mm 1189mm;  /* A0 paper for now */
+	margin: 0;
+}
+
+html {
+	margin: 0;
+	width: 900mm;/*841mm;*/
+	height: 1500mm;/*1189mm;*/ 
+	padding: 2.5cm;  /* Overall document "margins" (while keeping the background, etc.) */
+}
 
